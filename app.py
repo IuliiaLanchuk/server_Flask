@@ -16,7 +16,6 @@ def status():
     return {'messages_count': len(ListOfMessages)}
 
 
-# отправка сообщений
 @app.route('/api/Messenger', methods=['POST'])
 def sendMessage():
     msg = request.json
@@ -30,12 +29,11 @@ def sendMessage():
 @app.route('/api/Messenger/<int:id>')
 def getMessage(id):
     print(id)
-    if id >= 0 and id < len(ListOfMessages):
+    if 0 <= id < len(ListOfMessages):
         print(ListOfMessages[id])
         return ListOfMessages[id], 200
     else:
         return "Not Found", 404
-
 
 
 if __name__ == '__main__':
